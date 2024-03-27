@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prevención Covid-19</title>
+</head>
+
+<body>
+    <h1>Prevención Covid-19</h1>
+    <form>
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        <label for="ocupacion">Ocupación:</label><br>
+        <input type="text" id="ocupacion" name="ocupacion"><br><br>
+        <label for="edad">Edad:</label><br>
+        <input type="number" id="edad" name="edad"><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('nombre').value;
+            const ocupacion = document.getElementById('ocupacion').value;
+            const edad = parseInt(document.getElementById('edad').value);
+
+            if (edad < 18 && ocupacion === 'estudiante') {
+                alert('Señora ' + nombre + ', usted debe estar en casa hasta nueva orden');
+            } else if (edad < 18 && ocupacion === 'trabajadora') {
+                alert('Señora ' + nombre + ', los menores de edad no deben trabajar, quédese en casa');
+            } else if (edad >= 18 && edad <= 59 && ocupacion === 'estudiante') {
+                alert('Señora ' + nombre + ', Todos los centros educativos están bajo la modalidad virtual. Usted debe estar en su casa y solo salir el día que correspondiente en el pico y cédula');
+            } else if (edad >= 18 && edad <= 59 && ocupacion === 'trabajadora') {
+                alert('Señora ' + nombre + ', Usted debe portar un permiso especial o que su trabajo esté dentro de las excepciones, de lo contrario usted debe estar en su casa laborando virtualmente (Teletrabajo)');
+            } else if (edad >=60 && (ocupacion === 'trabajadora' || ocupacion === 'estudiante')) {
+                alert('Estimado señora ' + nombre + ', respetuosamente le informamos que no debe salir de su casa. Sin duda, usted ha sido una persona muy valiosa para su familia y la sociedad. Necesitamos seguir contando con usted y aprender de su gran experiencia');
+            }
+        });
+    </script>
+</body>
+
+</html>
